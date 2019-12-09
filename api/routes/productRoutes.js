@@ -34,4 +34,16 @@ router.post('/', (req, res) => {
         })
 })
 
+router.delete('/:id', (req, res) => {
+    const { id } = req.params;
+
+    Products.deleteProduct(id)
+        .then(prod => {
+            res.status(200).json({ message: `product with id ${id} has been successfully deleted!`})
+        })
+        .catch(err => {
+            res.status(500).json({ error: err.message })
+        })
+})
+
 module.exports = router;

@@ -2,12 +2,10 @@
 exports.up = function(knex) {
     return knex.schema
     .createTable("products", tbl => {
+        tbl.increments()
         tbl
             .string("name")
             .notNullable()
-            .unique();
-        tbl
-            .uuid("id")
             .unique();
          tbl
             .string("description")

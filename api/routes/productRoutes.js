@@ -39,11 +39,24 @@ router.delete('/:id', (req, res) => {
 
     Products.deleteProduct(id)
         .then(prod => {
-            res.status(200).json({ message: `product with id ${id} has been successfully deleted!`})
+            res.status(200).json({prod})
         })
         .catch(err => {
             res.status(500).json({ error: err.message })
         })
 })
 
+router.put('/:id', (req, res) => {
+    const { id } = req.params;
+
+    const body = req.body;
+
+    Products.updateProduct(id, body)
+        .then(prod => {
+            res.status(201).json({ prod})
+        })
+        .catch(err => {
+            res.status(500).json({ error: err.message })
+        })
+})
 module.exports = router;

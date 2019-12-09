@@ -12,15 +12,12 @@ exports.up = function(knex) {
          tbl
             .string("description")
             .notNullable()
-            .unique();
         tbl
             .string("currency")
             .notNullable()
-            .unique();
         tbl
             .integer("price")
             .notNullable()
-            .unique();
         tbl
             .integer("user_id")
             .notNullable()

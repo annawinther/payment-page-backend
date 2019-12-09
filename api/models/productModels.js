@@ -10,6 +10,16 @@ module.exports = {
 
 function getAllProducts(){
     return db('products')
+        .join("users", "users.id", "products.user_id")
+        .groupBy("products.id", "products.name", "products.description", "products.currency", "products.price")
+        .select(
+        "products.id",
+        "products.name",
+        "products.description",
+        "products.currency",
+        "products.price"
+        )
+        // .where({ user_id: userID })   
 };
 
 function getProductById(id){

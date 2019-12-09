@@ -24,14 +24,26 @@ function getAllProducts(){
 
 function getProductById(id){
     return db('products')
+        .select("products.id",
+        "products.name",
+        "products.description",
+        "products.currency",
+        "products.price")
         .where({ id })
         .first()
 };
 
 async function addProduct(product){
-    const [id] = await db('products').insert(product, "id");
+    const id = await db('products').insert(product);
     return getProductById(id)
+    // return "lol"
 };
+// function addProduct(product){
+//     return BroadcastChannel('products').insert(product, "id")
+//         .then(ids => {
+//             const [id]
+//         })
+// }
 
 function deleteProduct(productId){
     return db('products')

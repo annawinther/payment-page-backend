@@ -23,14 +23,15 @@ router.get('/:id', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-    
-   Products.addProduct(req.body)
-    .then(product => {
-        res.status(201).json({ product })
-    })
-    .catch(err => {
+    const product = req.body;
+
+    Products.addProduct(product)
+     .then(prod => {
+        res.status(201).json({ prod })
+        })
+     .catch(err => {
         res.status(500).json({ error: err.message })
-    })
+        })
 })
 
 module.exports = router;

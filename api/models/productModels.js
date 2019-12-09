@@ -28,7 +28,7 @@ function getProductById(id){
         .first()
 };
 
-async function addProduct(products){
+async function addProduct(product){
     const [id] = await db('products').insert(product, "id");
     return getProductById(id)
 };

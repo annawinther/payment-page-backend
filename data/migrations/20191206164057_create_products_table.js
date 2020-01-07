@@ -2,25 +2,20 @@
 exports.up = function(knex) {
     return knex.schema
     .createTable("products", tbl => {
+        tbl.increments()
         tbl
             .string("name")
             .notNullable()
             .unique();
-        tbl
-            .uuid("id")
-            .unique();
          tbl
             .string("description")
             .notNullable()
-            .unique();
         tbl
             .string("currency")
             .notNullable()
-            .unique();
         tbl
             .integer("price")
             .notNullable()
-            .unique();
         tbl
             .integer("user_id")
             .notNullable()

@@ -22,7 +22,7 @@ router.post('/register', async (req, res) => {
         const users = await Users.addUser(newUser)
         res.status(201).json({users})
     } catch (error) {
-        res.status(500).json({message: "could not create user"})
+        res.status(500).json({ error: error.message })
     }
 });
 

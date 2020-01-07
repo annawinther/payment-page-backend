@@ -18,6 +18,16 @@ function findBy(param){
 }
 function findById(id){
     return db('users')
+        .select(
+            'users.id',
+            'users.name',
+            'users.email',
+            'users.created_at',
+            'users.stripe_user_id',
+            'users.stripe_public_key',
+            'users.refresh_token',
+            'users.access_token'
+        )
         .where({ id })
         .first()
 }

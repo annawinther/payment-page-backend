@@ -10,18 +10,40 @@ module.exports = {
 
 function getAllProducts(){
     return db('products')
+        .join("users", "users.id", "products.user_id")
+        .groupBy("products.id", "products.name", "products.description", "products.currency", "products.price")
+        .select(
+        "products.id",
+        "products.name",
+        "products.description",
+        "products.currency",
+        "products.price"
+        )
+        // .where({ user_id: userID })   
 };
 
 function getProductById(id){
     return db('products')
+        .select("products.id",
+        "products.name",
+        "products.description",
+        "products.currency",
+        "products.price")
         .where({ id })
         .first()
 };
 
-async function addProduct(products){
-    const [id] = await db('products').insert(product, "id");
+async function addProduct(product){
+    const id = await db('products').insert(product);
     return getProductById(id)
+    // return "lol"
 };
+// function addProduct(product){
+//     return BroadcastChannel('products').insert(product, "id")
+//         .then(ids => {
+//             const [id]
+//         })
+// }
 
 function deleteProduct(productId){
     return db('products')

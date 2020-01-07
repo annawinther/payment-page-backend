@@ -53,7 +53,7 @@ router.put('/:id', (req, res) => {
 
     Products.updateProduct(id, body)
         .then(prod => {
-            res.status(201).json({ prod})
+            res.status(201).json({ prod })
         })
         .catch(err => {
             res.status(500).json({ error: err.message })

@@ -9,10 +9,6 @@
 
 These instructions will get you a copy of the project up and running on your local machine for contribution and testing purposes.
 
-## Getting Started
-
-These instructions will get you a copy of the project up and running on your local machine for contribution and testing purposes.
-
 ## Installing
 
 - Clone Repository
@@ -128,4 +124,169 @@ Response Body:
 }
 ```
 
+## Products
 
+## POST /api/products
+
+_**Description**: Creates a new project for user
+
+Request Body: 
+
+```json
+ {
+        "name": "Test",
+        "description": "Test to update Readme",
+        "currency": "NOK",
+        "price": 2020,
+        "user_id": 2
+ }
+```
+Response Body:
+
+```json
+{
+    "prod": {
+        "id": 6,
+        "name": "Test",
+        "description": "Test to update Readme",
+        "currency": "NOK",
+        "price": 2020
+    }
+}
+```
+
+## GET /api/products 
+
+_**Description**: Gets all products belonging to that user
+
+Request Body: 
+
+```json
+{}
+```
+
+
+Response Body:
+
+```json
+[
+    {
+        "id": 1,
+        "name": "Test product",
+        "description": "this is a test by test",
+        "currency": "GBP",
+        "price": 3000
+    },
+    {
+        "id": 2,
+        "name": "Currency test anna",
+        "description": "testing UPDATE for second time!!!",
+        "currency": "NOK",
+        "price": 4000
+    },
+    {
+        "id": 3,
+        "name": "Currency test Peter",
+        "description": "testing UPDATE",
+        "currency": "NOK",
+        "price": 4000
+    },
+    {
+        "id": 5,
+        "name": "Currency test Pdter",
+        "description": "testing if currency is unique",
+        "currency": "NOK",
+        "price": 4000
+    },
+    {
+        "id": 6,
+        "name": "Test",
+        "description": "Test to update Readme",
+        "currency": "NOK",
+        "price": 2020
+    },
+    {
+        "id": 7,
+        "name": "Test1",
+        "description": "Test1 to update Readme",
+        "currency": "NOK",
+        "price": 2120
+    },
+    {
+        "id": 8,
+        "name": "Test12",
+        "description": "Test2 to update Readme",
+        "currency": "NOK",
+        "price": 2020
+    }
+]
+```
+
+## GET /api/products/:id
+
+_**Description**: Gets a specified productby its id
+
+Request Body: 
+
+```json
+{}
+```
+
+Response Body:
+
+```json
+{
+    "product": {
+        "id": 1,
+        "name": "Test product",
+        "description": "this is a test by test",
+        "currency": "GBP",
+        "price": 3000
+    }
+}
+```
+
+## DELETE /api/products/:id
+
+_**Description**: Deletes a product 
+
+Request Body: 
+
+```json
+{}
+```
+
+Response Body:
+
+```json
+{
+    "prod": 1
+}
+```
+
+## PUT /api/products/:id
+
+_**Description**: Updates an existing product 
+
+Request Body:
+
+```json
+{
+        "name": "Test For Updating",
+        "description": "Updating the product",
+        "currency": "NOK",
+        "price": 2011
+}
+```
+Response Body: 
+
+```json
+{
+    "prod": 1
+}
+```
+
+
+## Technologies
+
+- Node | Express | bcryptjs | knex | SQLite | jsonwebtoken

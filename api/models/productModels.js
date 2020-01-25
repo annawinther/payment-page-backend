@@ -33,9 +33,10 @@ function getProductById(id){
         .first()
 };
 
-async function addProduct(product){
-    const id = await db('products').insert(product);
-    return getProductById(id)
+function addProduct(product){
+    return db('products')
+        .insert(product)
+        .then(ids => getProductById(ids[0]))
     // return "lol"
 };
 // function addProduct(product){

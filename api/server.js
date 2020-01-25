@@ -6,11 +6,11 @@ const server = express();
 
 server.use(express.json());
 server.use(cors())
-server.use('/api', authRouter);
-server.use('/api', productsRouter);
+server.use('/api/auth', authRouter);
+server.use('/api/products', productsRouter);
 
 server.get('/', (req, res) => {
-    res.status(200).json("Server running")
+    res.status(200).json("Welcome to the Paymentpage API")
 })
 
 module.exports = server;
